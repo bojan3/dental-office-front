@@ -1,0 +1,23 @@
+<div class="center-content">
+
+    <mat-card class="login-card">
+        <mat-card-header>
+        <mat-card-title>Dobro došli u našu zubarsku ordinaciju!</mat-card-title>
+        </mat-card-header>
+        <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+        <form (ngSubmit)="login()" [formGroup]="loginForm">
+        <mat-card-content>
+        <br>
+        <p>Unesite broj telefona kako biste nastavili dalje. </p>
+        <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Broj telefona:</mat-label>
+            <input formControlName="phoneNumber" matInput required>
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit">Nastavi</button>
+        </mat-card-actions>
+    </form>
+    </mat-card>
+  
+</div>
