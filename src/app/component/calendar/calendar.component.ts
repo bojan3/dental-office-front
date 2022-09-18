@@ -20,6 +20,9 @@ export class CalendarComponent implements OnInit {
   @Input()
   events = [];
 
+  @Input()
+  forPatient = false;
+
   calendarOptions!: CalendarOptions;
 
   constructor(
@@ -49,11 +52,14 @@ export class CalendarComponent implements OnInit {
   }
 
   showDetails(args: any){
-    // console.log(args.event._def.extendedProps.publicId);
+    console.log(args.event);
     // this.dialog.open(@Inject(MAT_DIALOG_DATA) public data: args.event._def.extendedProps.publicId)
-    this.dialog.open(AppointmentDialogComponent, {
-      data: args.event._def.extendedProps.publicId
-    });
+    
+    if(args.event._def.extendedProps.mine){
+      this.dialog.open(AppointmentDialogComponent, {
+        data: args.event._def.extendedProps.publicId
+      });
+    }
   }
 
 }

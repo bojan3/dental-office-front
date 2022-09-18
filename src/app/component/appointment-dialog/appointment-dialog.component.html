@@ -3,7 +3,8 @@
 <p>početak: {{appointment.startDateTime}}</p>
 <p>trajanje: {{appointment.duration}}</p>
 <p>tip: {{appointment.type}}</p>
+<p *ngIf="!canCancel" style="color:red"> Nije moguće otkazati dati termin </p>
 <button mat-button (click)="cancelAppointment()">Otkaži termin</button>
-
+<p *ngIf="forPatient"> *Termin je moguće 24h pre početka </p>
   
   

@@ -15,11 +15,13 @@ import 'web-component-essentials';
 import { AppointmentDialogComponent } from './component/appointment-dialog/appointment-dialog.component';
 import { AppointmentCreateComponent } from './component/appointment-create/appointment-create.component';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { PatientPageComponent } from './component/patient-page/patient-page.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'dentist-page', component: DentistPageComponent },
-  { path: 'create', component: AppointmentCreateComponent }
+  { path: 'create', component: AppointmentCreateComponent },
+  { path: 'patient-page', component: PatientPageComponent }
 ]
 
 @NgModule({
@@ -29,7 +31,8 @@ const appRoutes: Routes = [
     LoginComponent,
     CalendarComponent,
     AppointmentDialogComponent,
-    AppointmentCreateComponent
+    AppointmentCreateComponent,
+    PatientPageComponent
   ],
   imports: [
     BrowserModule,

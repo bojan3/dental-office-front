@@ -6,7 +6,7 @@ import { AppointmentDTO } from '../entity/AppointmentDTO';
 @Injectable({
   providedIn: 'root'
 })
-export class DentistService {
+export class PatientService {
 
   httpOptions = {
     headers : new HttpHeaders({
@@ -17,11 +17,12 @@ export class DentistService {
 
   constructor(private http: HttpClient) { }
 
-  getAppointments(): Observable<AppointmentDTO[]> {
-    return this.http.get<AppointmentDTO[]>("http://localhost:8080/api/dentist/appointments");
+  getAppointments(phoneNumber: any): Observable<AppointmentDTO[]> {
+    return this.http.get<AppointmentDTO[]>("http://localhost:8080/api/patient/appointments/" + phoneNumber);
   }
 
   cancelAppointment(id: number): Observable<boolean>{
-    return this.http.delete<boolean>("http://localhost:8080/api/dentist/appointment/cancel/" + id);
+    return this.http.delete<boolean>("http://localhost:8080/api/patient/appointment/cancel/" + id);
   }
+
 }

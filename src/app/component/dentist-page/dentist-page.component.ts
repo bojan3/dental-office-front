@@ -13,7 +13,9 @@ export class DentistPageComponent implements OnInit {
 
   events: any;
 
-  constructor(private dentistService: DentistService) { }
+  constructor(
+    private dentistService: DentistService
+    ) { }
 
   ngOnInit(): void {
     this.dentistService.getAppointments().subscribe( (appointments) => {

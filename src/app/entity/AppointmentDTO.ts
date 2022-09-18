@@ -19,13 +19,15 @@ export class AppointmentDTO {
     startDateTime: Date;
     duration: number;
     type: AppoitmentType;
+    mine: boolean;
 
     constructor(
         id: number,
         patient: PatientDTO,
         startDateTime: Date,
         duration: AppoitmentDuration,
-        type: AppoitmentType
+        type: AppoitmentType,
+        mine: boolean
 
     ){
         this.id = id;
@@ -33,6 +35,7 @@ export class AppointmentDTO {
         this.startDateTime = startDateTime;
         this.duration = duration;
         this.type = type;
+        this.mine = mine;
     }
 
 }

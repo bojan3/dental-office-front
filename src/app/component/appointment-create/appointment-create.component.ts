@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { AppoitmentType } from 'src/app/entity/AppointmentDTO';
 import { AppoitmentDuration, CreateAppointmentDTO } from 'src/app/entity/CreateAppointmentDTO';
@@ -17,6 +17,11 @@ export class AppointmentCreateComponent implements OnInit {
   minutes = [ { viewValue: '30', value: 30}, {viewValue: '00', value: 0} ];
   durations = [ { viewValue:'30', value: AppoitmentDuration.SHORT}, {viewValue: '60', value: AppoitmentDuration.LONG} ];
   types = Object.keys(AppoitmentType);
+
+  showConflicMessage = false;
+
+  @Input()
+  forPatient = false;
 
   constructor(
     private formBuilder: UntypedFormBuilder,
@@ -38,7 +43,11 @@ export class AppointmentCreateComponent implements OnInit {
     var dateTime = this.appointmentForm.value.date
     dateTime.setHours(this.appointmentForm.value.hours)
     dateTime.setMinutes(this.appointmentForm.value.minutes)
-    var appointment = new CreateAppointmentDTO(this.appointmentForm.value.phoneNumber, dateTime, this.appointmentForm.value.duration, Number(this.appointmentForm.value.type));
-    this.appointmentService.createAppointment(appointment).subscribe()
+    let phoneNumber = (this.forPatient) ? localStorage.getItem('phoneNumber') : this.appointmentForm.value.phoneNumber
+    var appointment = new CreateAppointmentDTO(phoneNumber, dateTime, this.appointmentForm.value.duration, Number(this.appointmentForm.value.type));
+    this.appointmentService.createAppointment(appointment).subscribe({
+      error: (e) => this.showConflicMessage = true
+  })
   }
+
 }

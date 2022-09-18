@@ -1,5 +1,4 @@
 .calendar {
-
     width: 50%;
     float: left;
     margin: 5%;
@@ -7,6 +6,6 @@
 
 .makeAppointment {
     float: right;
-    margin-right: 10%;
+    margin-right: 15%;
     margin-top: 5%;
 }
