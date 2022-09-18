@@ -1,0 +1,70 @@
+<mat-card class="form-card">
+    <mat-card-header>
+    <mat-card-title>Novi termin</mat-card-title>
+    </mat-card-header>
+    <form (ngSubmit)="createAppointment()" [formGroup]="appointmentForm">
+    <mat-card-content>
+    
+        <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Broj telefona:</mat-label>
+            <input formControlName="phoneNumber" matInput required>    
+        </mat-form-field>
+        
+        <p>Datum: </p>        
+
+        <mat-form-field appearance="fill">
+            <mat-label>datum</mat-label>
+            <input formControlName="date" matInput [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+          
+
+        <p>Vreme: </p>
+        <mat-form-field appearance="fill">
+            <mat-label>hh</mat-label>
+            <mat-select formControlName="hours">
+              <mat-option *ngFor="let hour of hours" [value]="hour">
+                {{hour}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>mm</mat-label>
+            <mat-select formControlName="minutes">
+              <mat-option *ngFor="let minute of minutes" [value]="minute.value">
+                {{minute.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <p>Trajanje: </p>
+
+          <mat-form-field appearance="fill">
+            <mat-label>mm</mat-label>
+            <mat-select formControlName="duration">
+              <mat-option *ngFor="let duration of durations" [value]="duration.value">
+                {{duration.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <p>Tip: </p>
+
+          <mat-form-field appearance="fill">
+            <mat-label>tip</mat-label>
+            <mat-select formControlName="type">
+              <mat-option *ngFor="let type of types" [value]="type">
+                {{type}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+    </mat-card-content>
+    <mat-card-actions>
+    <button class="submit-button" mat-raised-button color="primary" type="submit">Nastavi</button>
+    </mat-card-actions>
+</form>
+</mat-card>

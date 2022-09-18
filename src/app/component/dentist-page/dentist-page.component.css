@@ -1,0 +1,21 @@
+.wrapper {
+    /* display: flex; */
+}
+
+.calendar {
+    /* text-align: center;
+    height: 400px;
+    width: 60%; */
+    /* margin: auto;
+    width: 40%; */
+    width: 50%;
+    float: left;
+    margin: 5%;
+}
+
+.makeAppointment {
+    /* width: 40%; */
+    float: right;
+    margin-right: 15%;
+    margin-top: 5%;
+}
